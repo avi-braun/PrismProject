@@ -1,0 +1,24 @@
+
+include Variables_Avi.gwl
+
+GalvoScanMode                                                                                     %%
+ContinuousMode
+ConnectPointsOn
+InvertZAxis 1
+var $Lpower = 100
+set $GST = 0.1
+GalvoSettlingTime $GST
+PiezoSettlingTime 1                                                                                %%
+LaserPower $Lpower
+ResetInterface
+
+XOffset -200
+
+var $S_speed_Solid = 30000
+var $PSSolid = 0.8
+ScanSpeed $S_speed_Solid
+PowerScaling $PSSolid
+% FindInterfaceAt 1
+WriteText "PS= %.2f, SS=%.0f" # ($PSSolid, $S_speed_Solid/1000)
+MoveStageY 20
+
